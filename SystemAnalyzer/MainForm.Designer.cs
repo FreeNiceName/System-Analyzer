@@ -187,7 +187,7 @@
             this.numMaxDiskLoad.Location = new System.Drawing.Point(355, 138);
             this.numMaxDiskLoad.Name = "numMaxDiskLoad";
             this.numMaxDiskLoad.Size = new System.Drawing.Size(63, 20);
-            this.numMaxDiskLoad.TabIndex = 26;
+            this.numMaxDiskLoad.TabIndex = 6;
             this.numMaxDiskLoad.Value = new decimal(new int[] {
             80,
             0,
@@ -281,7 +281,7 @@
             this.numMaxCpuTemperature.Location = new System.Drawing.Point(355, 13);
             this.numMaxCpuTemperature.Name = "numMaxCpuTemperature";
             this.numMaxCpuTemperature.Size = new System.Drawing.Size(63, 20);
-            this.numMaxCpuTemperature.TabIndex = 16;
+            this.numMaxCpuTemperature.TabIndex = 1;
             this.numMaxCpuTemperature.Value = new decimal(new int[] {
             60,
             0,
@@ -303,7 +303,7 @@
             this.numMaxDiskTemperature.Location = new System.Drawing.Point(355, 113);
             this.numMaxDiskTemperature.Name = "numMaxDiskTemperature";
             this.numMaxDiskTemperature.Size = new System.Drawing.Size(63, 20);
-            this.numMaxDiskTemperature.TabIndex = 14;
+            this.numMaxDiskTemperature.TabIndex = 5;
             this.numMaxDiskTemperature.Value = new decimal(new int[] {
             40,
             0,
@@ -339,7 +339,7 @@
             0});
             this.numMaxRamLoad.Name = "numMaxRamLoad";
             this.numMaxRamLoad.Size = new System.Drawing.Size(63, 20);
-            this.numMaxRamLoad.TabIndex = 12;
+            this.numMaxRamLoad.TabIndex = 3;
             this.numMaxRamLoad.Value = new decimal(new int[] {
             80,
             0,
@@ -352,7 +352,7 @@
             this.numMaxPagingFileLoad.Location = new System.Drawing.Point(355, 88);
             this.numMaxPagingFileLoad.Name = "numMaxPagingFileLoad";
             this.numMaxPagingFileLoad.Size = new System.Drawing.Size(63, 20);
-            this.numMaxPagingFileLoad.TabIndex = 12;
+            this.numMaxPagingFileLoad.TabIndex = 4;
             this.numMaxPagingFileLoad.Value = new decimal(new int[] {
             30,
             0,
@@ -374,7 +374,7 @@
             this.numMaxCpuLoad.Location = new System.Drawing.Point(355, 38);
             this.numMaxCpuLoad.Name = "numMaxCpuLoad";
             this.numMaxCpuLoad.Size = new System.Drawing.Size(63, 20);
-            this.numMaxCpuLoad.TabIndex = 10;
+            this.numMaxCpuLoad.TabIndex = 2;
             this.numMaxCpuLoad.Value = new decimal(new int[] {
             70,
             0,
@@ -518,11 +518,11 @@
             this.lbGpuInfo.TabIndex = 11;
             this.lbGpuInfo.Text = "GPU";
             // 
-            // lbMotherboard
+            // lbMotherboardInfo
             // 
             this.lbMotherboardInfo.AutoSize = true;
             this.lbMotherboardInfo.Location = new System.Drawing.Point(187, 65);
-            this.lbMotherboardInfo.Name = "lbMotherboard";
+            this.lbMotherboardInfo.Name = "lbMotherboardInfo";
             this.lbMotherboardInfo.Size = new System.Drawing.Size(23, 13);
             this.lbMotherboardInfo.TabIndex = 10;
             this.lbMotherboardInfo.Text = "MB";
@@ -601,7 +601,7 @@
             // 
             // timerUpdateInfo
             // 
-            this.timerUpdateInfo.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerUpdateInfo.Tick += new System.EventHandler(this.timerUpdateInfo_Tick);
             // 
             // MainForm
             // 
@@ -616,7 +616,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Курсовой проект";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.panelSystemState.ResumeLayout(false);
             this.panelSystemState.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxDiskLoad)).EndInit();

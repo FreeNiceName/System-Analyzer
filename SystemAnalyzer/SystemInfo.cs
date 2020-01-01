@@ -28,13 +28,14 @@ namespace SystemAnalyzer
 
         public SystemInfo()
         {
-            this.OS = this.GetInfoString(InfoType.OS, "Win32_OperatingSystem");
-            this.CPU = this.GetInfoString(InfoType.CPU, "Win32_Processor");
-            this.GPU = this.GetInfoString(InfoType.GPU, "Win32_VideoController");
-            this.MB = this.GetInfoString(InfoType.MB, "Win32_BaseBoard");
-            this.DiskDrive = this.GetInfoString(InfoType.DiskDrive, "Win32_DiskDrive");
-            this.RAM = this.GetInfoString(InfoType.RAM, "Win32_PhysicalMemory");
+            OS = GetInfoString(InfoType.OS, "Win32_OperatingSystem");
+            CPU = GetInfoString(InfoType.CPU, "Win32_Processor");
+            GPU = GetInfoString(InfoType.GPU, "Win32_VideoController");
+            MB = GetInfoString(InfoType.MB, "Win32_BaseBoard");
+            DiskDrive = GetInfoString(InfoType.DiskDrive, "Win32_DiskDrive");
+            RAM = GetInfoString(InfoType.RAM, "Win32_PhysicalMemory");
         }
+
         private List<PropertyDataCollection> GetHardwareInfo(string WIN32_Class)
         {
             List<PropertyDataCollection> result = new List<PropertyDataCollection>();
@@ -48,7 +49,7 @@ namespace SystemAnalyzer
 
         private string GetInfoString(InfoType _type, string WIN32_Class)
         {
-            List<PropertyDataCollection> info = this.GetHardwareInfo(WIN32_Class);
+            List<PropertyDataCollection> info = GetHardwareInfo(WIN32_Class);
             string str = "";
 
             switch (_type)
@@ -58,24 +59,24 @@ namespace SystemAnalyzer
                 case InfoType.GPU:
                     for(int i = 0; i < info.Count;i++)
                     {
-                        str+= this.toMB(info[i]["AdapterRAM"].Value.ToString()) + info[i]["Name"].Value.ToString();
+                        str+= toMB(info[i]["AdapterRAM"].Value.ToString()) + info[i]["Name"].Value.ToString();
                         if (i < info.Count - 1)
                             str += ", ";
                     }
                     return str;
                 case InfoType.MB:
-                    return info[0]["Product"].Value.ToString() + info[0]["Manufacturer"].Value.ToString();
+                    return info[0]["Product"].Value.ToString() + " " + info[0]["Manufacturer"].Value.ToString();
                 case InfoType.OS:
                     return info[0]["Caption"].Value.ToString();
                 case InfoType.RAM:
                     double size = 0;
                     foreach (var obj in info)
                         size += Convert.ToDouble(obj["Capacity"].Value);
-                    return this.toMB(size.ToString(), true);
+                    return toMB(size.ToString(), true);
                 case InfoType.DiskDrive:
                     for (int i = 0; i < info.Count; i++)
                     {
-                        str += this.toMB(info[i]["Size"].Value.ToString()) + info[i]["Model"].Value.ToString();
+                        str += toMB(info[i]["Size"].Value.ToString()) + info[i]["Model"].Value.ToString();
                         if (i < info.Count - 1)
                             str += ", ";
                     }

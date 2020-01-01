@@ -166,7 +166,7 @@ namespace SystemAnalyzer
             lbDiskTemperature.Text = state.DiskTemperature + "°C";
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             timerUpdateInfo.Stop();
         }
@@ -176,10 +176,10 @@ namespace SystemAnalyzer
             this.Close();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timerUpdateInfo_Tick(object sender, EventArgs e)
         {
             state.UpdateValues();
-
+            
             UpdateCpuLoad();
             UpdateCpuTemperature();
             UpdateRamLoad();
